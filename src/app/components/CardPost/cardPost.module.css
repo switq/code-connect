@@ -1,0 +1,39 @@
+.card-container {
+    width: 488px;
+    /* min-height: 431px; */
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #171D1F;
+}
+
+.header {
+    background: #888888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-image {
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 4px;
+}
+
+.card-title {
+    margin: 16px 0;
+}
+
+.card-text {
+    margin: 0;
+}
+
+.card-content {
+    margin: 0 16px;
+}
+
+.card-footer {
+    margin: 16px;
+    align-self: flex-end;
+}
