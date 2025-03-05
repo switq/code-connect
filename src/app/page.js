@@ -1,5 +1,6 @@
-import { CardPost } from "./components/CardPost";
+import { CardPost } from "../components/CardPost";
 import logger from '/src/logger';
+import styles from './page.module.css';
 
 
 const post = {
@@ -17,24 +18,22 @@ const post = {
   }
 }
 
-async function getAllPosts () {
-  const response = await fetch('http://localhost:3042/postss');
-  if(!response.ok) {
+async function getAllPosts() {
+  const response = await fetch('http://localhost:3042/posts');
+  if (!response.ok) {
     logger.error('Failed to fetch post data');
     return [];
   }
-  logger.info('Post data fetched successfully');
   const data = await response.json();
-  return data; 
+  return data;
 }
 
 export default async function Home() {
   const posts = await getAllPosts();
 
   return (
-      <main>
-        {posts.map(post => <CardPost post={post} />)}
-      </main>
-      
+    <main className={styles.grid}>
+      {posts.map(post => <CardPost post={post} />)}
+    </main>
   );
 }
