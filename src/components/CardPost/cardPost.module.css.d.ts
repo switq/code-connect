@@ -2,6 +2,7 @@
 declare const cardPost: {
   readonly "card-container": string;
   readonly header: string;
+  readonly "header-container": string;
   readonly "header-image": string;
   readonly "card-title": string;
   readonly "card-text": string;

@@ -1,6 +1,8 @@
 import logger from '/src/logger';
 import remarkHtml from 'remark-html';
 import { remark } from 'remark';
+import { CardPost } from '../../../components/CardPost';
+import styles from './page.module.css';
 
 async function getPostBySlug(slug) {
     const url = `http://localhost:3042/posts?slug=${slug}`;
@@ -33,8 +35,11 @@ const PagePost = async ({params}) => {
 
     return (
         <>
-            <h1 style={{ color: 'white' }}>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
+            <CardPost post={post} highlight />
+            <h3 className={styles.subtitle}>Código:</h3>
+            <div className={styles.code}>
+                <div dangerouslySetInnerHTML={{ __html: post.markdown }} />
+            </div>
         </>
     )
 }

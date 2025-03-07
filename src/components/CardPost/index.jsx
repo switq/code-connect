@@ -3,12 +3,12 @@ import Image from "next/image"
 import { Avatar } from "../Avatar"
 import Link from "next/link"
 
-export const CardPost = ({post}) => {
+export const CardPost = ({ post, highlight }) => {
     return (
         <Link href={`/posts/${post.slug}`} className={styles["link"]}>
-            <article className={styles["card-container"]}>
+            <article className={styles["card-container"]} style={{ width: highlight ? 993 : 486 }}>
                 <header className={styles["header"]}>
-                    <figure>
+                    <figure className={styles["header-container"]} style={{ height: highlight ? 300 : 133 }}>
                         <Image className={styles["header-image"]} src={post.cover} width={438} height={133} alt={`header image: ${post.title}`} />
                     </figure>
                 </header>
