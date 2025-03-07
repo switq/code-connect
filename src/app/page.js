@@ -1,6 +1,7 @@
 import { CardPost } from "../components/CardPost";
 import logger from '/src/logger';
 import styles from './page.module.css';
+import Link from "next/link";
 
 
 const post = {
@@ -18,8 +19,8 @@ const post = {
   }
 }
 
-async function getAllPosts() {
-  const response = await fetch('http://localhost:3042/posts');
+async function getAllPosts(page = 1) {
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`);
   if (!response.ok) {
     logger.error('Failed to fetch post data');
     return [];
@@ -28,12 +29,17 @@ async function getAllPosts() {
   return data;
 }
 
-export default async function Home() {
-  const posts = await getAllPosts();
+export default async function Home({ searchParams }) {
+  const currentPage = searchParams.page || 1;
+  const { data: posts, prev, next } = await getAllPosts(currentPage);
 
   return (
     <main className={styles.grid}>
-      {posts.map(post => <CardPost post={post} />)}
+      {posts.map(post => <CardPost key={post.id} post={post} />)}
+      <div className={styles.pagination}>
+        {prev && <Link href={`/?page=${prev}`}>Previous page</Link>}
+        {next && <Link href={`/?page=${next}`}>Next page</Link>}
+      </div>
     </main>
   );
 }

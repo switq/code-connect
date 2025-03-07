@@ -37,3 +37,9 @@
     margin: 16px;
     align-self: flex-end;
 }
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    
+}

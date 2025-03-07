@@ -7,6 +7,7 @@ declare const cardPost: {
   readonly "card-text": string;
   readonly "card-content": string;
   readonly "card-footer": string;
+  readonly link: string;
 };
 export default cardPost;
 //# sourceMappingURL=cardPost.module.css.d.ts.map
